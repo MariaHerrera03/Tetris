@@ -6,8 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tetris</title>
     <script src="./script.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://kit.fontawesome.com/21e3e3826b.js" crossorigin="anonymous"></script>
 </head>
 <body onload="inicializa()">
-    <canvas id="canvas" width="300" height="600" style="border:2px solid #000000"></canvas>
+    <div class="main-container">
+        <div class="sub-container">
+            <div class="col-container">
+                <h1>Tetris</h1>
+                <h2></h2>
+            </div>
+            <div class="col-container">
+                <canvas id="canvas" width="300" height="600" style="border:2px solid #000000"></canvas>
+                <div class="row-container">
+                    <button id="btnStart" class="button"><i class="fa-solid fa-play"></i></button>
+                    <button id="btnStart" class="button"><i class="fa-solid fa-arrow-right"></i></button>
+                    <button id="btnStart" class="button"><i class="fa-solid fa-arrow-down"></i></button>
+                    <button id="btnStart" class="button"><i class="fa-solid fa-arrow-left"></i></button>
+                    <button id="btnStart" class="button"><i class="fa-solid fa-rotate-left"></i></button>
+                    <button id="btnStart" class="button">Reset</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<footer>
+    <span>Tetris en JavaScript creado por Leidy & María
+    </span>
+</footer>
 </body>
 </html>
