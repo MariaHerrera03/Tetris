@@ -1,0 +1,67 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+}
+
+.general {
+  background-color: #ff00de;
+}
+
+.container-top {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.container-buttons-top {
+  border: 2px solid #000000;
+  padding: 1%;
+}
+
+#puntaje {
+  color: #ffffff;
+  font-size: 20px;
+  padding: 1%;
+}
+
+.titleGeneral {
+  font-size: 50px;
+  color: #ffffff;
+}
+
+.title {
+  font-size: 30px;
+  color: black;
+}
+
+kbd {
+  font-size: 20px !important;
+}
+
+footer {
+  padding: 2% 0 1% 0;
+  text-align: center;
+}
+
+.canvasScene {
+  margin-top: 3.5vh;
+  margin-bottom: 3.5vh;
+  border: 5px solid #008f70;
+}
+
+.presentation-content {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .canvasScene {
+    width: 100%;
+  }
+  .titleGeneral {
+    font-size: 20px;
+  }
+}
