@@ -7,12 +7,9 @@
     <title>Tetris</title>
     <script src="./script.js"></script>
     <link rel="stylesheet" href="./style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/21e3e3826b.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body onload="inicializa()">
     <div class="main-container">
         <div class="sub-container">
             <div class="col-container">
@@ -23,18 +20,20 @@
                 <canvas id="canvas" width="300" height="600" style="border:2px solid #000000"></canvas>
                 <div class="row-container">
                     <button id="btnStart" class="button"><i class="fa-solid fa-play"></i></button>
-                    <button id="btnDown" class="button"><i class="fa-solid fa-arrow-right"></i></button>
-                    <button id="btnLeft" class="button"><i class="fa-solid fa-arrow-down"></i></button>
-                    <button id="btnRight" class="button"><i class="fa-solid fa-arrow-left"></i></button>
-                    <button id="btnRotate" class="button"><i class="fa-solid fa-rotate-left"></i></button>
-                    <button id="btReset" class="button">Reset</button>
+                    <button id="btnStart" class="button"><i class="fa-solid fa-arrow-right"></i></button>
+                    <button id="btnStart" class="button"><i class="fa-solid fa-arrow-down"></i></button>
+                    <button id="btnStart" class="button"><i class="fa-solid fa-arrow-left"></i></button>
+                    <button id="btnStart" class="button"><i class="fa-solid fa-rotate-left"></i></button>
+                    <button id="btnStart" class="button">Reset</button>
                 </div>
             </div>
         </div>
     </div>
-<footer>
-    <span>Tetris en JavaScript creado por Leidy & María
-    </span>
-</footer>
+    <footer>
+        <span>Tetris en JavaScript creado por Leidy & María
+        </span>
+    </footer>        
+    <script src="assets/js/sweetalert2.min.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
