@@ -25,7 +25,7 @@ Para desplegar este proyecto:
 -https://www.genbeta.com/desarrollo/crea-tu-propio-tetris
 -https://github.com/parzibyte/tetris-javascript
 ```
-## Design 🖍️
+## Vista previa 🖍️
 A continuación, podrás darle un vistazo a la calculadora:
 
 ![App Screenshot](https://github.com/MariaHerrera03/CalculadoraJS/blob/main/assets/img/CalculadoraJS.png)
