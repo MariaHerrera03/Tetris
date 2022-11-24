@@ -9,6 +9,7 @@ html {
 
 .general {
   background-color: #ff00de;
+  margin: 0 auto;
 }
 
 .container-top {
@@ -38,10 +39,6 @@ html {
   color: black;
 }
 
-kbd {
-  font-size: 20px !important;
-}
-
 footer {
   padding: 2% 0 1% 0;
   text-align: center;
@@ -64,4 +61,75 @@ footer {
   .titleGeneral {
     font-size: 20px;
   }
+}
+
+kbd {
+  padding: 0.1875rem 0.375rem;
+  font-size: 20px !important;
+  color: red;
+  background-color: #ffffff;
+  border-radius: 0.25rem;
+}
+
+.swal2-popup {
+  margin: 0 auto;
+  display: none;
+  position: relative;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: center;
+  width: 32em;
+  max-width: 100%;
+  padding: 1.25em;
+  border: none;
+  border-radius: 0.3125em;
+  background: #16143b;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+h1.title {
+  font-size: 100%;
+  color: #ff00de;
+  justify-content: space-around;
+}
+
+img {
+  width: 10%;
+}
+
+strong.title {
+  color: #008f70;
+}
+
+.list-group-item {
+  margin: 0 auto;
+  position: relative;
+  display: block;
+  padding: var(--bs-list-group-item-padding-y) var(--bs-list-group-item-padding-x);
+  color: #fff;
+  text-decoration: none;
+}
+
+.list-group-item.title {
+  background-color: transparent;
+  border: transparent;
+  color: rgb(229, 255, 0);
+}
+
+.list-group {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+  border-radius: none;
+}
+
+.swal2-styled.swal2-confirm {
+    border: 0;
+    border-radius: 0.25em;
+    background: initial;
+    background-color: #000000;
+    color: #fff;
+    font-size: 1.0625em;
 }

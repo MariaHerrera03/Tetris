@@ -1,10 +1,10 @@
-class Juego {
+class Tetris {
   // Square length in pixels
   static longitud_cuadrado = screen.width > 420 ? 30 : 20;
   static columnas = 13;
   static filas = 20;
-  static ancho_canva = this.longitud_cuadrado * this.columnas;
-  static alto_canva = this.longitud_cuadrado * this.filas;
+  static ancho = this.longitud_cuadrado * this.columnas;
+  static alto = this.longitud_cuadrado * this.filas;
   static color_vacio = "#a6e22e";
   static color_borde = "#ffffff";
   static color_fila_eliminada = "#d81c38";
@@ -51,16 +51,18 @@ class Juego {
     this.init();
   }
 
+// Run the game
+
   init() {
-    this.mensajeBienvenida();
+    this.mensajeVentanaEmergente();
     this.iniciarDOM();
     this.iniciarSonidos();
-    this.reiniciarJuego();
+    this.reiniciarTetris();
     this.dibujarCanvas();
     this.iniciarControles();
   }
 
-  reiniciarJuego() {
+  reiniciarTetris() {
     this.score = 0;
     this.sounds.success.currentTime = 0;
     this.sounds.success.pause();
@@ -71,30 +73,26 @@ class Juego {
     this.reiniciarXYGlobales();
     this.sincronizarPiezas_Tablero();
     this.refrescarPuntaje();
-    this.pausarJuego();
+    this.pausarTetris();
   }
 
-  mensajeBienvenida() {
+// Instructions window
+
+  mensajeVentanaEmergente() {
     Swal.fire(
-      "<h1 class='title'>Bienvenidos</h1>",
+      "",
       `
-        <strong class='title'>Controles:</strong>
         <ul class="list-group">
             <li class="list-group-item title"> <kbd>P</kbd><br>Pausar o reanudar </li>
             <li class="list-group-item title"> <kbd>R</kbd><br>Rotar</li>
             <li class="list-group-item title"> <kbd>Flechas de dirección</kbd><br>Mover figura hacia esa dirección</li>
             <li class="list-group-item title"><strong>También puedes usar los botones si estás en móvil</strong></li>
         </ul>
-        <hr>
-        <strong class='title'>Creado por:</strong>
-        <div class="d-flex">
-            <img src="../../assets/img/LogoJP.png" class="img-fluid logo" alt="">
-            <img src="../../assets/img/LogoLJ.png" class="img-fluid logo" alt="">
-            <img src="../../assets/img/LogoDD.png" class="img-fluid logo" alt="">
-        </div>
         `
     );
   }
+
+// Controls
 
   iniciarControles() {
     document.addEventListener("keydown", (e) => {
@@ -117,11 +115,13 @@ class Juego {
           this.rotarFigura();
           break;
         case "KeyP":
-          this.pausarOresumir();
+          this.pausarOcontinuar();
           break;
       }
       this.sincronizarPiezas_Tablero();
     });
+
+// Event listeners
 
     this.$btnDown.addEventListener("click", () => {
       if (!this.jugable) return;
@@ -141,7 +141,7 @@ class Juego {
     });
     [this.$btnPause, this.$btnResume].forEach(($btn) =>
       $btn.addEventListener("click", () => {
-        this.pausarOresumir();
+        this.pausarOcontinuar();
       })
     );
   }
@@ -168,33 +168,33 @@ class Juego {
     this.siRotarFigura();
   }
 
-  pausarOresumir() {
+  pausarOcontinuar() {
     if (this.pausado) {
-      this.continuarJuego();
+      this.continuarTetris();
       this.$btnResume.hidden = true;
       this.$btnPause.hidden = false;
     } else {
-      this.pausarJuego();
+      this.pausarTetris();
       this.$btnResume.hidden = false;
       this.$btnPause.hidden = true;
     }
   }
 
-  pausarJuego() {
+  pausarTetris() {
     this.sounds.background.pause();
     this.pausado = true;
     this.jugable = false;
     clearInterval(this.intervalId);
   }
 
-  continuarJuego() {
+  continuarTetris() {
     this.sounds.background.play();
     this.refrescarPuntaje();
     this.pausado = false;
     this.jugable = true;
     this.intervalId = setInterval(
       this.mainLoop.bind(this),
-      Juego.velocidad_pieza
+      Tetris.velocidad_pieza
     );
   }
 
@@ -212,7 +212,7 @@ class Juego {
     this.jugable = true;
   }
 
-  perderJuego() {
+  perderTetris() {
     // Check if there's something at Y 1. Maybe it is not fair for the player, but it works
     for (const point of this.piezasExistentes[1]) {
       if (point.taken) {
@@ -239,28 +239,28 @@ class Juego {
   cambiarColorFilaEliminada(yCoordinates) {
     for (let y of yCoordinates) {
       for (const point of this.piezasExistentes[y]) {
-        point.color = Juego.color_fila_eliminada;
+        point.color = Tetris.color_fila_eliminada;
       }
     }
   }
 
   añadirPuntaje(rows) {
-    if (Juego.velocidad_pieza > 0) {
-      Juego.velocidad_pieza -= rows.length * 20;
+    if (Tetris.velocidad_pieza > 0) {
+      Tetris.velocidad_pieza -= rows.length * 20;
       clearInterval(this.intervalId);
       this.intervalId = setInterval(
         this.mainLoop.bind(this),
-        Juego.velocidad_pieza
+        Tetris.velocidad_pieza
       );
     }
-    this.score += Juego.puntaje_por_cuadro * Juego.columnas * rows.length;
+    this.score += Tetris.puntaje_por_cuadro * Tetris.columnas * rows.length;
     this.refrescarPuntaje();
   }
 
   removerFilasdePiezasExistentes(yCoordinates) {
     for (let y of yCoordinates) {
       for (const point of this.piezasExistentes[y]) {
-        point.color = Juego.color_vacio;
+        point.color = Tetris.color_vacio;
         point.taken = false;
       }
     }
@@ -284,7 +284,7 @@ class Juego {
       invertedCoordinates.reverse();
 
       for (let yCoordinate of invertedCoordinates) {
-        for (let y = Juego.filas - 1; y >= 0; y--) {
+        for (let y = Tetris.filas - 1; y >= 0; y--) {
           for (let x = 0; x < this.piezasExistentes[y].length; x++) {
             if (y < yCoordinate) {
               let counter = 0;
@@ -297,7 +297,7 @@ class Juego {
                 this.piezasExistentes[auxiliarY + 1][x] =
                   this.piezasExistentes[auxiliarY][x];
                 this.piezasExistentes[auxiliarY][x] = {
-                  color: Juego.color_vacio,
+                  color: Tetris.color_vacio,
                   taken: false,
                 };
 
@@ -312,7 +312,7 @@ class Juego {
 
       this.sincronizarPiezas_Tablero();
       this.jugable = true;
-    }, Juego.velocidad_eliminar_fila);
+    }, Tetris.velocidad_eliminar_fila);
   }
 
   mainLoop() {
@@ -341,26 +341,26 @@ class Juego {
         this.sounds.tap.currentTime = 0;
         this.sounds.tap.play();
         this.moverFiguras_PiezasExistentes();
-        if (this.perderJuego()) {
+        if (this.perderTetris()) {
           Swal.fire("Juego terminado", "Inténtalo de nuevo");
           this.sounds.background.pause();
           this.jugable = false;
-          this.reiniciarJuego();
+          this.reiniciarTetris();
           return;
         }
         this.verificar_eliminarFilas();
         this.elegirFiguraRandom();
         this.sincronizarPiezas_Tablero();
-      }, Juego.tiempo_nuevo_bloque);
+      }, Tetris.tiempo_nuevo_bloque);
     }
     this.sincronizarPiezas_Tablero();
   }
 
-  cleanGameBoardAndOverlapExistingPieces() {
-    for (let y = 0; y < Juego.filas; y++) {
-      for (let x = 0; x < Juego.columnas; x++) {
+  cleanTetrisBoardAndOverlapExistingPieces() {
+    for (let y = 0; y < Tetris.filas; y++) {
+      for (let x = 0; x < Tetris.columnas; x++) {
         this.board[y][x] = {
-          color: Juego.color_vacio,
+          color: Tetris.color_vacio,
           taken: false,
         };
         // Overlap existing piece if any
@@ -371,7 +371,7 @@ class Juego {
     }
   }
 
-  overlapCurrentFigureOnGameBoard() {
+  overlapCurrentFigureOnTetrisBoard() {
     if (!this.currentFigure) return;
     for (const point of this.currentFigure.traerPuntaje()) {
       this.board[point.y + this.globalY][point.x + this.globalX].color =
@@ -380,8 +380,8 @@ class Juego {
   }
 
   sincronizarPiezas_Tablero() {
-    this.cleanGameBoardAndOverlapExistingPieces();
-    this.overlapCurrentFigureOnGameBoard();
+    this.cleanTetrisBoardAndOverlapExistingPieces();
+    this.overlapCurrentFigureOnTetrisBoard();
   }
 
   dibujarCanvas() {
@@ -394,20 +394,20 @@ class Juego {
         this.canvasContext.fillRect(
           x,
           y,
-          Juego.longitud_cuadrado,
-          Juego.longitud_cuadrado
+          Tetris.longitud_cuadrado,
+          Tetris.longitud_cuadrado
         );
         this.canvasContext.restore();
-        this.canvasContext.strokeStyle = Juego.color_borde;
+        this.canvasContext.strokeStyle = Tetris.color_borde;
         this.canvasContext.strokeRect(
           x,
           y,
-          Juego.longitud_cuadrado,
-          Juego.longitud_cuadrado
+          Tetris.longitud_cuadrado,
+          Tetris.longitud_cuadrado
         );
-        x += Juego.longitud_cuadrado;
+        x += Tetris.longitud_cuadrado;
       }
-      y += Juego.longitud_cuadrado;
+      y += Tetris.longitud_cuadrado;
     }
     setTimeout(() => {
       requestAnimationFrame(this.dibujarCanvas.bind(this));
@@ -437,8 +437,8 @@ class Juego {
     this.$btnDown = document.querySelector("#btnAbajo");
     this.$btnRight = document.querySelector("#btnDerecha");
     this.$btnLeft = document.querySelector("#btnIzquierda");
-    this.$canvas.setAttribute("width", Juego.ancho_canva + "px");
-    this.$canvas.setAttribute("height", Juego.alto_canva + "px");
+    this.$canvas.setAttribute("width", Tetris.ancho + "px");
+    this.$canvas.setAttribute("height", Tetris.alto + "px");
     this.canvasContext = this.$canvas.getContext("2d");
   }
 
@@ -447,7 +447,7 @@ class Juego {
   }
 
   reiniciarXYGlobales() {
-    this.globalX = Math.floor(Juego.columnas / 2) - 1;
+    this.globalX = Math.floor(Tetris.columnas / 2) - 1;
     this.globalY = 0;
   }
 
@@ -455,24 +455,18 @@ class Juego {
 
     switch (Utils.numeroRandomRango(1, 7)) {
       case 1:
-        /*
-        El cuadrado
-        */
+      // Smashboy
         return new Tetromino([
           [new Point(0, 0), new Point(1, 0), new Point(0, 1), new Point(1, 1)],
         ]);
       case 2:
-        /*
-        La línea
-        */
+      // Hero
         return new Tetromino([
           [new Point(0, 0), new Point(1, 0), new Point(2, 0), new Point(3, 0)],
           [new Point(0, 0), new Point(0, 1), new Point(0, 2), new Point(0, 3)],
         ]);
       case 3:
-        /*
-        La L
-        */
+      // Orange ricky
         return new Tetromino([
           [new Point(0, 1), new Point(1, 1), new Point(2, 1), new Point(2, 0)],
           [new Point(0, 0), new Point(0, 1), new Point(0, 2), new Point(1, 2)],
@@ -480,9 +474,7 @@ class Juego {
           [new Point(0, 0), new Point(1, 0), new Point(1, 1), new Point(1, 2)],
         ]);
       case 4:
-        /*
-        La J
-        */
+      // Blue ricky
         return new Tetromino([
           [new Point(0, 0), new Point(0, 1), new Point(1, 1), new Point(2, 1)],
           [new Point(0, 0), new Point(1, 0), new Point(0, 1), new Point(0, 2)],
@@ -490,26 +482,20 @@ class Juego {
           [new Point(0, 2), new Point(1, 2), new Point(1, 1), new Point(1, 0)],
         ]);
       case 5:
-        /*
-        La Z
-        */
+      // Cleveland Z
         return new Tetromino([
           [new Point(0, 0), new Point(1, 0), new Point(1, 1), new Point(2, 1)],
           [new Point(0, 1), new Point(1, 1), new Point(1, 0), new Point(0, 2)],
         ]);
       case 6:
-        /*
-        La otra Z
-        */
+      // Rhode island Z
         return new Tetromino([
           [new Point(0, 1), new Point(1, 1), new Point(1, 0), new Point(2, 0)],
           [new Point(0, 0), new Point(0, 1), new Point(1, 1), new Point(1, 2)],
         ]);
       case 7:
       default:
-        /*
-        La T
-        */
+      // Teewee
         return new Tetromino([
           [new Point(0, 1), new Point(1, 1), new Point(1, 0), new Point(2, 1)],
           [new Point(0, 0), new Point(0, 1), new Point(0, 2), new Point(1, 1)],
@@ -522,17 +508,17 @@ class Juego {
   iniciarTablero_PiezasExistentes() {
     this.board = [];
     this.piezasExistentes = [];
-    for (let y = 0; y < Juego.filas; y++) {
+    for (let y = 0; y < Tetris.filas; y++) {
       this.board.push([]);
       this.piezasExistentes.push([]);
-      for (let x = 0; x < Juego.columnas; x++) {
+      for (let x = 0; x < Tetris.columnas; x++) {
         this.board[y].push({
-          color: Juego.color_vacio,
+          color: Tetris.color_vacio,
           taken: false,
         });
         this.piezasExistentes[y].push({
           taken: false,
-          color: Juego.color_vacio,
+          color: Tetris.color_vacio,
         });
       }
     }
@@ -547,9 +533,9 @@ class Juego {
   puntoFueraDeLimites(absoluteX, absoluteY) {
     return (
       absoluteX < 0 ||
-      absoluteX > Juego.columnas - 1 ||
+      absoluteX > Tetris.columnas - 1 ||
       absoluteY < 0 ||
-      absoluteY > Juego.filas - 1
+      absoluteY > Tetris.filas - 1
     );
   }
 
@@ -634,7 +620,7 @@ class Juego {
   }
 
   async preguntarConfirmacionReset() {
-    this.pausarJuego();
+    this.pausarTetris();
     const result = await Swal.fire({
       title: "¿Quieres reiniciar el juego?",
       icon: "question",
@@ -645,9 +631,9 @@ class Juego {
       confirmButtonText: "Sí",
     });
     if (result.value) {
-      this.reiniciarJuego();
+      this.reiniciarTetris();
     } else {
-      this.continuarJuego();
+      this.continuarTetris();
     }
   }
 }
@@ -658,8 +644,8 @@ class Utils {
   };
 
   static colorRandom() {
-    return Juego.colores[
-      Utils.numeroRandomRango(0, Juego.colores.length - 1)
+    return Tetris.colores[
+      Utils.numeroRandomRango(0, Tetris.colores.length - 1)
     ];
   }
 
@@ -717,7 +703,7 @@ class Tetromino {
   }
 }
 
-const game = new Juego("canvas");
+const game = new Tetris("canvas");
 document.querySelector("#reset").addEventListener("click", () => {
   game.preguntarConfirmacionReset();
 });
