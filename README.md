@@ -26,7 +26,7 @@ Para desplegar este proyecto:
 ```
 ## Vista previa 🖍️
 
-A continuación, podrás darle un vistazo a la calculadora:
+A continuación, podrás darle un vistazo al juego:
 
 ![App Screenshot](https://github.com/MariaHerrera03/Tetris/blob/main/assets/img/BigTetrisJS.png)
 
