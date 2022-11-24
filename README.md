@@ -1,4 +1,4 @@
-# Tetris
+# Tetris 🧱🕹️
 Reto para crear el famoso juego llamado tetris, donde su crearor **Aleksei Pazhitnov** quiere una nueva versión de su famoso juego
 
 ## Skills  :hammer_and_wrench:
