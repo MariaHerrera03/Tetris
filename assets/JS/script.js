@@ -1,6 +1,6 @@
 class Tetris {
   // Square length in pixels
-  static longitud_cuadrado = screen.width > 420 ? 23 : 13;
+  static longitud_cuadrado = screen.width > 420 ? 24 : 14;
   static columnas = 10;
   static filas = 20;
   static ancho = this.longitud_cuadrado * this.columnas;
