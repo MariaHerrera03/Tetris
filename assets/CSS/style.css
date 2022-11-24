@@ -292,7 +292,13 @@ div#swal2-content.swal2-html-container {
   div.bottom-button-group {
     width: 250px;
   }
-  body, .general{
-    width: 40vh;
+  body {
+    width: 100vh;
+  }
+  .general {
+    width: 100vh;
+  }
+  div.col-12 {
+    width: 50%;
   }
 }
