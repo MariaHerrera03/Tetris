@@ -14,7 +14,7 @@ body, .general{
 
 .wrapper {
   animation: scroll 70s linear infinite;
-  background: url(./img/star05.png), #111111;
+  background: url(../img/star05.png), #111111;
   color: #eee;
   height: 100%;
   min-width: 360px;

@@ -412,12 +412,12 @@ class Tetris {
 
   iniciarSonidos() {
     this.sounds.background = Utils.cargarSonido(
-      "../../assets/sounds/NewDonkBit.mp3",
+      "../music/New Donk City_ Daytime 8 Bit.mp3",
       true
     );
-    this.sounds.success = Utils.cargarSonido("../../assets/sounds/success.wav");//llena fila
-    this.sounds.denied = Utils.cargarSonido("../../assets/sounds/denied.wav");//error o no movimiento
-    this.sounds.tap = Utils.cargarSonido("../../assets/sounds/tap.wav");//game over
+    this.sounds.success = Utils.cargarSonido("../music/success.wav");
+    this.sounds.denied = Utils.cargarSonido("../music/denied.wav");
+    this.sounds.tap = Utils.cargarSonido("../music/tap.wav");
   }
 
   iniciarDOM() {
