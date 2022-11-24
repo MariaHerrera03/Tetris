@@ -1,10 +1,12 @@
 # Tetris 🧱🕹️
+
 Reto para crear el famoso juego llamado tetris, donde su crearor **Aleksei Pazhitnov** quiere una nueva versión de su famoso juego
 
 ## Skills  :hammer_and_wrench:
 |  Estructura    |        Estilo       |     Funcionalidad   |
 |----------------|---------------------|---------------------|
 |    `Html`      |        `Css`        |     `JavaScript`    |
+
 ## Despliegue  📁
 
 Para desplegar este proyecto:  
@@ -22,10 +24,18 @@ Para desplegar este proyecto:
 -https://www.genbeta.com/desarrollo/crea-tu-propio-tetris
 -https://github.com/parzibyte/tetris-javascript
 ```
-  
-## Demo  :computer:
+## Vista previa 🖍️
 
-## Desarrollado por:
-- [@MariaHerrera03] https://github.com/MariaHerrera03
-- [@LeidyRivera] https://github.com/Ladyriv
-  
+A continuación, podrás darle un vistazo a la calculadora:
+
+![App Screenshot](https://github.com/MariaHerrera03/CalculadoraJS/blob/main/assets/img/CalculadoraJS.png)
+
+## Demo 🔗
+
+Ingresa al siguiente link para ver el proyecto e interactúa con el:
+https://tetrisgames.netlify.app/
+
+## Desarrollado por 👩‍💻
+
+- [@MariaHerrera03](https://github.com/MariaHerrera03)
+- [@LeidyRivera] (https://github.com/Ladyriv)
