@@ -8,8 +8,8 @@
 body, .general{
   padding-bottom: 1%;
   margin: 0 auto;
-  background-color: #ffffff;
-  overflow-y: hidden;
+  background-color: #a44cc3;
+  width: 100%;
 }
 
 .wrapper {
