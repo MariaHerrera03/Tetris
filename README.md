@@ -28,7 +28,7 @@ Para desplegar este proyecto:
 
 A continuación, podrás darle un vistazo a la calculadora:
 
-![App Screenshot](https://github.com/MariaHerrera03/CalculadoraJS/blob/main/assets/img/CalculadoraJS.png)
+![App Screenshot](https://github.com/MariaHerrera03/Tetris/blob/main/assets/img/BigTetrisJS.png)
 
 ## Demo 🔗
 
