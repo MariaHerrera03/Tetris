@@ -1,13 +1,13 @@
 class Tetris {
   // Square length in pixels
-  static longitud_cuadrado = screen.width > 420 ? 30 : 20;
-  static columnas = 13;
+  static longitud_cuadrado = screen.width > 420 ? 23 : 13;
+  static columnas = 10;
   static filas = 20;
   static ancho = this.longitud_cuadrado * this.columnas;
   static alto = this.longitud_cuadrado * this.filas;
-  static color_vacio = "#dfbffa";
-  static color_borde = "#ffffff";
-  static color_fila_eliminada = "#d81c38";
+  static color_vacio = "#16143b";
+  static color_borde = "#ffffff50";
+  static color_fila_eliminada = "#ffffff";
   // When a piece collapses with something at its bottom, how many time wait for putting another piece? (in ms)
   static tiempo_nuevo_bloque = 300;
   // Speed of falling piece (in ms)
@@ -17,23 +17,13 @@ class Tetris {
   // Score to add when a square dissapears (for each square)
   static puntaje_por_cuadro = 1;
   static colores = [
-    "#ffd300",
-    "#de38c8",
-    "#652ec7",
-    "#33135c",
-    "#13ca91",
-    "#ff9472",
-    "#35212a",
-    "#ff8b8b",
-    "#28cf75",
-    "#00a9fe",
-    "#04005e",
-    "#120052",
-    "#272822",
-    "#f92672",
-    "#66d9ef",
-    "#a6e22e",
-    "#fd971f",
+    "#bb23d6",
+    "#e0050b",
+    "#f7c832",
+    "#5ad429",
+    "#4cbefd",
+    "#9a27f7",
+    "#6664ff",
   ];
 
   constructor(canvasId) {
@@ -82,11 +72,13 @@ class Tetris {
     Swal.fire(
       "",
       `
+      <h1 class="titulo-emergente">Bienvenido(a) a</h1><h2 class="segundo-titulo-emergente">Tetris</h2>
+      <span class="subtitulo-emergente">A continuación encontrarás unas pequeñas indicaciones</span>
         <ul class="list-group">
-            <li class="list-group-item title"> <kbd>P</kbd><br>Pausar o reanudar </li>
-            <li class="list-group-item title"> <kbd>R</kbd><br>Rotar</li>
-            <li class="list-group-item title"> <kbd>Flechas de dirección</kbd><br>Mover figura hacia esa dirección</li>
-            <li class="list-group-item title"><strong>También puedes usar los botones si estás en móvil</strong></li>
+            <li class="list-group-item title">Para pausar o reanudar el juego usa: <kbd>P</kbd></li>
+            <li class="list-group-item title">Para rotar una ficha usa: <kbd>R</kbd></li>
+            <li class="list-group-item title">Para mover las fichas usa: <kbd>Flechas de dirección</kbd></li>
+            <li class="list-group-item title"><b>También puedes usar los botones si estás en móvil</b></li>
         </ul>
         `
     );
@@ -623,10 +615,9 @@ class Tetris {
     this.pausarTetris();
     const result = await Swal.fire({
       title: "¿Quieres reiniciar el juego?",
-      icon: "question",
       showCancelButton: true,
-      confirmButtonColor: "#560772",
-      cancelButtonColor: "#1CAC0B",
+      confirmButtonColor: "",
+      cancelButtonColor: "",
       cancelButtonText: "No",
       confirmButtonText: "Sí",
     });
