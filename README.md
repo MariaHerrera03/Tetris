@@ -18,7 +18,7 @@ Para desplegar este proyecto:
 ```bash
   Ejecutar archivo Index.html
 ```  
-## Recursos
+## Recursos 📑
 ```
 -https://developer.mozilla.org/es/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript/Create_the_Canvas_and_draw_on_it
 -https://www.genbeta.com/desarrollo/crea-tu-propio-tetris
@@ -38,4 +38,4 @@ https://tetrisgames.netlify.app/
 ## Desarrollado por 👩‍💻
 
 - [@MariaHerrera03](https://github.com/MariaHerrera03)
-- [@LeidyRivera] (https://github.com/Ladyriv)
+- [@LeidyRivera](https://github.com/Ladyriv)
