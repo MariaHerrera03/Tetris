@@ -2,8 +2,7 @@
 
 Reto para crear el famoso juego llamado tetris, donde su crearor **Aleksei Pazhitnov** quiere una nueva versión de su famoso juego
 
-## Skills 🧰
-
+## Skills  :hammer_and_wrench:
 |  Estructura    |        Estilo       |     Funcionalidad   |
 |----------------|---------------------|---------------------|
 |    `Html`      |        `Css`        |     `JavaScript`    |
@@ -26,6 +25,7 @@ Para desplegar este proyecto:
 -https://github.com/parzibyte/tetris-javascript
 ```
 ## Vista previa 🖍️
+
 A continuación, podrás darle un vistazo a la calculadora:
 
 ![App Screenshot](https://github.com/MariaHerrera03/CalculadoraJS/blob/main/assets/img/CalculadoraJS.png)
