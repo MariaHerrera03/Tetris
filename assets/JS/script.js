@@ -5,7 +5,7 @@ class Tetris {
   static filas = 20;
   static ancho = this.longitud_cuadrado * this.columnas;
   static alto = this.longitud_cuadrado * this.filas;
-  static color_vacio = "#a6e22e";
+  static color_vacio = "#dfbffa";
   static color_borde = "#ffffff";
   static color_fila_eliminada = "#d81c38";
   // When a piece collapses with something at its bottom, how many time wait for putting another piece? (in ms)
