@@ -24,6 +24,9 @@ Para desplegar este proyecto:
 -https://www.genbeta.com/desarrollo/crea-tu-propio-tetris
 -https://github.com/parzibyte/tetris-javascript
 ```
+## Presentación del producto
+https://docs.google.com/presentation/d/1CfUQIZRiZECJ_DaMBr_krmzcriTwE11Pfvl6zJ0d0JM/edit?usp=sharing
+
 ## Vista previa 🖍️
 
 A continuación, podrás darle un vistazo al juego:
